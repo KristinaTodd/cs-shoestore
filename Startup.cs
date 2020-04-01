@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using MySql.Data.MySqlClient;
 using shoestore.Repositories;
 using shoestore.Services;
 
@@ -33,6 +34,7 @@ namespace shoestore
       // register transients for dependency injection
       services.AddTransient<ShoesService>();
       services.AddTransient<ShoesRepository>();
+
     }
 
     private IDbConnection CreateDbConnection()

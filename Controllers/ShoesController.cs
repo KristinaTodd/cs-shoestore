@@ -10,7 +10,7 @@ using shoestore.Models;
 namespace shoestore.Controllers
 {
   [ApiController]
-  [Route("[controller]")]
+  [Route("api/[controller]")]
   public class ShoesController : ControllerBase
   {
     private readonly ShoesService _ss;
@@ -33,6 +33,7 @@ namespace shoestore.Controllers
       }
 
     }
+
     [HttpGet("{id}")]
     public ActionResult<Shoe> Get(int id)
     {
@@ -47,7 +48,7 @@ namespace shoestore.Controllers
     }
 
 
-    [HttpPost("{id}")]
+    [HttpPost]
     public ActionResult<Shoe> Create([FromBody] Shoe newShoe)
     {
       try
@@ -66,6 +67,7 @@ namespace shoestore.Controllers
     {
       try
       {
+        updatedShoe.Id = id;
         return Ok(_ss.Edit(updatedShoe));
       }
       catch (Exception e)
